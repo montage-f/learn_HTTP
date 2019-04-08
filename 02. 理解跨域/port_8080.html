@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+	// 这个页面是由8080端口的服务返回的, 所以在这里请求9090端口的话, 就会涉及跨域问题
+
+	// 返回错误信息:(index):1 Access to XMLHttpRequest at 'http://127.0.0.1:9090/' from origin 'http://127.0.0.1:8080'
+	// has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+
+	// 如果我们要解决这个问题, 我们就需要在9090端口的服务下, 进行头部设置
+	let xhr = new XMLHttpRequest();
+	xhr.open('GET', 'http://127.0.0.1:9090');
+	xhr.send();
+</script>
+</html>
