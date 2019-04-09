@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+123
+</body>
+<script>
+	// https://fetch.spec.whatwg.org/#fetch-method
+	// Request Method: OPTIONS 表示预请求
+	fetch('http://127.0.0.1:9090', {
+		method: 'POST',
+		// Access to fetch at 'http://127.0.0.1:9090/' from origin 'http://localhost:8080' has been blocked by CORS policy:
+		// Request header field x-text-cors is not allowed by Access-Control-Allow-Headers in preflight response.
+		// CORS 跨域的允许方法只有GET, HEAD, POST
+		// CORS 跨域的允许Content-Type: text/plain, multipart/form-data, application/x-www-form-urlencoded
+		// 超出默认允许跨域的问题, 我们就需要预请求
+		headers: {
+			'X-Text-Cors': '1234'
+		}
+	}).then(v => {
+		console.log(v);
+	});
+
+</script>
+</html>
