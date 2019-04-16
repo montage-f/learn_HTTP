@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/form" method="POST" enctype="application/x-www-form-urlencoded">
+    <p>enctype="application/x-www-form-urlencoded"</p>
+    用户：<input type="text" name="name">
+    <br>
+    密码：<input type="password" name="password">
+    <input type="submit">
+</form>
+<form action="/form-data" method="POST" id="form" enctype="multipart/form-data">
+    <p>enctype="multipart/form-data"</p>
+    用户：
+    <input type="text" name="user">
+    <br/>
+    密码：
+    <input type="password" name="password">
+    <br>
+    <input type="file">
+    <input type="submit">
+</form>
+<button id="button">上传文件</button>
+</body>
+<script>
+    let input = document.querySelector('input[type="file"]');
+    let button = document.querySelector('#button');
+    button.addEventListener('click', (e) => {
+        e.preventDefault();
+        let formData = new FormData();
+        formData.append('file', input.files[0]);
+        formData.append('user', 'hubot');
+        fetch('/form-data', {
+            method: 'POST',
+            body: formData
+        });
+    });
+</script>
+</html>
