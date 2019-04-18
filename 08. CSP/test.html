@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>content-security-policy</div>
+<script>
+    // xss攻击, 我们不希望在我们的网页里面直接执行script里面的脚本
+    console.log('inline js');
+</script>
+<script src="/test"></script>
+</body>
+</html>
